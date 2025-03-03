@@ -1,0 +1,732 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "EDU-NODE-APIS",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://edu-api.akcess.dev"
+    },
+    {
+      "url": "https://ak-api-v2.akcess.dev"
+    },
+    {
+      "url": "https://api-kw-prod-p.akcess.app"
+    },
+    {
+      "url": "http://localhost:4200"
+    },
+    {
+      "url": "https://akcess.ac-kuwait.edu.kw"
+    },
+    {
+      "url": "https://edu-kw.akcess.app"
+    }
+  ],
+  "paths": {
+    "/api/v1/generate-token": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Generate-token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": ""
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "edu-api.akcess.dev"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ca9ffc768a07c0a49c2d432869e2b395"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "355"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"163-DzfuTC7vb3l6MOHqvB6tX50uraY\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 03 Oct 2023 04:44:20 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "success",
+                    "value": {
+                      "status": true,
+                      "message": "Token successfully generated",
+                      "data": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFhNzc4ZDkxOWNiNTUwM2E5NTRlNTQiLCJkb21haW5uYW1lIjoiZWR1LWFwaS5ha2Nlc3MuZGV2IiwidXVpZCI6IjA5NWM4MmM3LTA5ZTAtNDlmNi04ZWVlLTE4MDJiZWYzYTViNSIsImlhdCI6MTY5NjMwODI2MCwiZXhwIjoxNjk2OTEzMDYwfQ.Ec42MLE_gmFN7q_aKlbckEXazczKUckRFsD1wNcUN-8"
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "summary": "Generate-token",
+                    "value": {
+                      "status": true,
+                      "message": "Token successfully generated",
+                      "data": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFhNzc4ZDkxOWNiNTUwM2E5NTRlNTQiLCJkb21haW5uYW1lIjoiZWR1LWFwaS5ha2Nlc3MuZGV2IiwidXVpZCI6IjA5NWM4MmM3LTA5ZTAtNDlmNi04ZWVlLTE4MDJiZWYzYTViNSIsImlhdCI6MTY5NjMwODI2MCwiZXhwIjoxNjk2OTEzMDYwfQ.Ec42MLE_gmFN7q_aKlbckEXazczKUckRFsD1wNcUN-8"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/get-akcessid": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "get-akcessid by email or phone ",
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "edu-api.akcess.dev"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ca9ffc768a07c0a49c2d432869e2b395"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFhNzc4ZDkxOWNiNTUwM2E5NTRlNTQiLCJkb21haW5uYW1lIjoiZWR1LWFwaS5ha2Nlc3MuZGV2IiwidXVpZCI6ImMzNzg1OGExLTJmZWQtNGJlYy05NGQzLWQyMjNhMzQ3YjBhNyIsImlhdCI6MTY5NjMxNzY0NCwiZXhwIjoxNjk2OTIyNDQ0fQ.Omwc7t-byIJA5-1m8Db1F4eOBP_2_lMOIyagwC9FX3M"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "dipal@akcess.dev"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "9773283074"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 04 Oct 2023 12:21:42 GMT"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Apache/2.4.41 (Ubuntu)"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "26"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"1a-Ixdv79LlCvC5PQjzTL9HKYhSk8A\""
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5, max=100"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "Keep-Alive"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "get-akcessid by email",
+                    "value": {
+                      "akcessId": "DK102016585"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "get-akcessid by phone",
+                    "value": {
+                      "akcessId": "DK102016585"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/create-akcessid": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "create-akcessid",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "dipalkharva@gmail.com",
+                  "phone": 9773283074,
+                  "countryCode": 91,
+                  "type": "email"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "edu-api.akcess.dev"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ca9ffc768a07c0a49c2d432869e2b395"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFhNzc4ZDkxOWNiNTUwM2E5NTRlNTQiLCJkb21haW5uYW1lIjoiZWR1LWFwaS5ha2Nlc3MuZGV2IiwidXVpZCI6IjNmODgyY2QyLTM5NTItNDFjMi04NTdlLTMyMjdlMDJiYmI1OSIsImlhdCI6MTcxNjQyMjYxMCwiZXhwIjoxNzE3MDI3NDEwfQ.w8XaZf9ivis6y0zcdijvIystAGG-1RGaKidui9tjqPw"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 04 Oct 2023 12:17:03 GMT"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Apache/2.4.41 (Ubuntu)"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "73"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"49-XIerSzCIFGxcl9sMlLPBW/ZwowE\""
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5, max=100"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "Keep-Alive"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "by phone",
+                    "value": {
+                      "status": true,
+                      "message": "message successfully sent. to (91)-9773283074"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "by email",
+                    "value": {
+                      "status": true,
+                      "message": "Email successfully sent. to dipalkharva@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/create-class": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Create-class",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "teacher_akcessid": 8,
+                  "name": "adding_date",
+                  "details": "adding Date in the data",
+                  "location": 30,
+                  "userallow": 50,
+                  "classes": [
+                    {
+                      "days": "thursday",
+                      "classDate": "2024-05-16",
+                      "openFrom": "11: 43 AM",
+                      "openTo": "11: 43 PM"
+                    },
+                    {
+                      "days": "friday",
+                      "classDate": "2024-05-27",
+                      "openFrom": "11: 43 AM",
+                      "openTo": "11: 43 PM"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 09 Oct 2023 07:57:52 GMT"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Apache/2.4.41 (Ubuntu)"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "357"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"165-0L9u+ZmhxhJ/9yGZrSU3KVHv9kg\""
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5, max=100"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "Keep-Alive"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": true,
+                  "message": "Class Record Successfully Cretad.",
+                  "data": [
+                    {
+                      "id": 125,
+                      "fk_user_id": 12,
+                      "name": "testing",
+                      "details": "testingdata",
+                      "location": "30",
+                      "userallow": "50",
+                      "qrno": 123,
+                      "openFrom": "11: 43 AM",
+                      "openTo": "11: 43 PM",
+                      "days": "tuesday",
+                      "label_type": "classes",
+                      "soft_delete": 0,
+                      "created": "2023-10-09T07:57:52.000Z",
+                      "modified": "2023-10-09T07:57:52.000Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/get-attendance-list": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "get-attendance-list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "class_id": 166,
+                  "classDate": "2024-06-02"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/send-email": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "send-email",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to": {
+                    "type": "string",
+                    "example": "singhpriyya@gmail.com"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "example": "testing from priya"
+                  },
+                  "text": {
+                    "type": "string",
+                    "example": "testing"
+                  },
+                  "html": {
+                    "type": "string",
+                    "example": "<h1>HTML CODE</h1>"
+                  },
+                  "attachments[INDEX]": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/firebase/generateeformdeeplinking": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "https://ak-api-v2.akcess.dev/firebase/generateeformdeeplinking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "eformurl": "https://akcess.ac-kuwait.edu.kwqrcode/eform/c3b4k4i4k4g2w3e4m4t4l3c3s4m3t3q4b45684/s2x4x4s4z405y213"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/send-sms": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "https://api-kw-prod-p.akcess.app/send-sms",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "countryCode": "91",
+                  "phone": "9033471902",
+                  "msg": "hii",
+                  "recievedType": "eform"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzgwZDg3ODIwY2I2ZDE2NjYxYWQ1MmYiLCJkb21haW5uYW1lIjoiZWR1LWt3LmFrY2Vzcy5hcHAiLCJ1dWlkIjoiZWI1NzY0NWEtMjFlMS00NWY3LWE3N2UtNDFmN2ExZDUwZjkzIiwiaWF0IjoxNzE3Njc2NDI0LCJleHAiOjE3MTgyODEyMjR9.UARtoSTdXvjalwktEMbGNQHTJSQiXkSVltJlEccHKEo"
+          },
+          {
+            "name": "apiKey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "12cd713e5335d6a2d33b29bab576b178"
+          },
+          {
+            "name": "origin",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "edu-kw.akcess.app"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/getattendance": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "https://akcess.ac-kuwait.edu.kw/api/getattendance",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "akcessid": "PS102016995",
+                  "classid": 7,
+                  "location": {
+                    "token": "eyIw6zswSWmyiAq1455jSq:APA91bEWe6hza6ztdVGREHQ92XJqRIOaboyKEuy0CUfTzCwt5kn_K49ToX1WGETjXidC_VVrHm6BwkOsFlMqPT_AwiUrB2z8KdMAAYdeVzPo5K3YWP4FZArBfwoHHw8x66OY_J19SJ80",
+                    "id": "a2c787eede45ad85",
+                    "type": null,
+                    "long": null,
+                    "lat": null,
+                    "os_version": null,
+                    "device_name": null,
+                    "app_version": null
+                  },
+                  "label_type": "classes"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "https://edu-kw.akcess.app/api/getattendance",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
